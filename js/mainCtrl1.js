@@ -10,7 +10,6 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
     $scope.state         = false;
     $scope.arrayObj      = [];
     $scope.cookieName    = 'bild';
-    $scope.todoList;
 
 
 
@@ -35,14 +34,24 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
     };
 
     //push array of objects to cookie
-    $scope.pushToCookie          = function(){
+    $scope.pushToCookie            = function(){
         var cook = $cookieStore.put($scope.cookieName, $scope.arrayObj);
         $scope.displayDataFromCookie();
     };
 
     //function for displayDatafrom cookie
-    $scope.displayDataFromCookie = function(){
-        $scope.todoList = $cookieStore.get($scope.cookieName);
-    }
+    $scope.displayDataFromCookie   = function(){
+         $scope.arrayObj = $cookieStore.get($scope.cookieName);
+
+    };
+
+    //function that will delete an item from the list
+    $scope.deleteItemFromList      = function(index){
+         $scope.arrayObj.splice(index, 1);
+         $cookieStore.put($scope.cookieName, $scope.arrayObj);
+
+    };
+
+    $scope.displayDataFromCookie();
 
 }]);
