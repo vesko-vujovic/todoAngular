@@ -63,11 +63,10 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
          */
         for(var i = 0; i < $scope.arrayObj.length; i++) {
 
-
                 if($scope.arrayObj[i].done === true )
                 {
                     $scope.arrayObj.splice(i, 1);
-                    break;
+                    continue;
                 }
 
         }
