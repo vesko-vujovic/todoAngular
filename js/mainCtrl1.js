@@ -45,12 +45,20 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
 
     };
 
-    //function that will delete an item from the list
+    /*
+      * function that will delete an item from the list
+      * @param index - this is index of clicked array
+     */
     $scope.deleteItemFromList      = function(index){
          $scope.arrayObj.splice(index, 1);
          $cookieStore.put($scope.cookieName, $scope.arrayObj);
-
     };
+
+    $scope.deleteCompleted         = function(){
+        angular.forEach($scope.arrayObj, function(x) {
+            if (!x.done) $scope.todoList.push(x);
+        });
+    }
 
     $scope.displayDataFromCookie();
 
