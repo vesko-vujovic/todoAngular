@@ -1,6 +1,6 @@
 (function(){
 
-
+    //here we call the same module from app.js
      var app = angular.module('todoApp');
 
     //main controller
@@ -46,6 +46,6 @@
     };
 
     //registration of this controller
-    app.controller('myCtrl',  ['$cookies', myCtrl]);
+    app.controller('myCtrl', myCtrl);
 
 }());
