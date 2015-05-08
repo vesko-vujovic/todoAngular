@@ -55,10 +55,25 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
     };
 
     $scope.deleteCompleted         = function(){
-        angular.forEach($scope.arrayObj, function(x) {
-            if (!x.done) $scope.todoList.push(x);
-        });
-    }
+
+        /**
+         * This is loop in loop, it deletes array of items in array of objects
+         * It finds objects value, then compares it with other object, and if we have
+         * match the item is deletes, else the loop continues
+         */
+        for(var i = 0; i < $scope.arrayObj.length; i++) {
+
+
+                if($scope.arrayObj[i].done === true )
+                {
+                    $scope.arrayObj.splice(i, 1);
+                    break;
+                }
+
+        }
+
+        $cookieStore.put($scope.cookieName, $scope.arrayObj);
+    };
 
     $scope.displayDataFromCookie();
 
