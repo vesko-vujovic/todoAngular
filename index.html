@@ -28,6 +28,7 @@
              </form>
              <div class="col-sm-5" ng-init="todoList">
                  <li ng-repeat="x in todoList ">
+                     <input type="checkbox" ng-model="x.done">
                      {{ x.task}}
                  </li>
 
