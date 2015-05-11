@@ -18,4 +18,35 @@ todoApp.config(['$httpProvider', function($httpProvider){
 todoApp.service('sharedService', function($http){
 
 
+    /**
+     * Methods for database storrage
+     * @param input - this is  input field value
+     */
+
+    //adding task to database
+    this.addToDatabase         = function(input){
+
+    };
+
+    // delete one task
+    this.deleteOneTaskFromDb   = function(){
+
+    };
+
+    //delete selected task
+    this.deleteSelectedFromDb  = function(){
+
+    };
+
+    
+    /**
+     * Methods for cookie storrage
+     */
+
+
+
+
+
+
+
 });
