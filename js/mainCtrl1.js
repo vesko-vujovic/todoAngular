@@ -30,7 +30,7 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
     $scope.pushToArray    = function(){
         var obj = {task: $scope.todo, done: false};
         $scope.arrayObj.push(obj);
-        $scope.pushToCookie()
+        $scope.pushToCookie();
     };
 
     //push array of objects to cookie
@@ -56,7 +56,6 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
 
     $scope.deleteCompleted         = function()
     {
-
         /**
          * This is loop in loop, it deletes array of items in array of objects
          * It finds objects value, then compares it with other object, and if we have
@@ -72,6 +71,11 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
 
     };
 
-    $scope.displayDataFromCookie();
+    if($cookieStore.get($scope.cookieName) !== undefined )
+    {
+        $scope.displayDataFromCookie();
+    }
+
+
 
 }]);
