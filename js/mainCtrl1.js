@@ -17,16 +17,11 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', 'databaseService
     $scope.isEmpty   = function(){
         if($scope.todo === null || $scope.todo === "")
         {
-            $scope.state = true;
+
         }
         else
         {
-            $scope.state = false;
-            $scope.storageMode === 'cookie'? $scope.pushToArray() : databaseService.addToDatabase($scope.todo, function(data){
 
-                console.log(data);
-            });
-            $scope.todo  = '';
         }
     };
 
