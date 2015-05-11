@@ -6,14 +6,16 @@ var todoApp = angular.module('todoApp', ['ngCookies']);
 //configiration for todoApp
 todoApp.config(['$httpProvider', function($httpProvider){
 
-    //make request visible for laravel
+    //angular has removed this type  of header so laravel can't see if this is an ajax request
+    // in order to work we modified this header so now to laravel it looks like ajax request
     $httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 }]);
 
 
 
 
-//new services to be used trough app
-todoApp.service('databaseService', function($http){
+//shared service for controllers
+todoApp.service('sharedService', function($http){
+
 
 });
