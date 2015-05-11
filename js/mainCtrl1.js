@@ -22,7 +22,10 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', 'databaseService
         else
         {
             $scope.state = false;
-            $scope.storageMode === 'cookie'? $scope.pushToArray() : databaseService.addToDatabase($scope.todo);
+            $scope.storageMode === 'cookie'? $scope.pushToArray() : databaseService.addToDatabase($scope.todo, function(data){
+
+                console.log(data);
+            });
             $scope.todo  = '';
         }
     };
@@ -71,6 +74,7 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', 'databaseService
         $cookieStore.put($scope.cookieName,$scope.arrayObj);
 
     };
+
 
     if($cookieStore.get($scope.cookieName) !== undefined )
     {

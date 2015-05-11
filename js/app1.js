@@ -10,16 +10,24 @@ todoApp.config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 }]);
 
+
+
+
 //new services to be used trough app
 todoApp.service('databaseService', function($http){
 
 
 
    //function to post data to database
-    this.addToDatabase            = function(input){
+    /**
+     *
+     * @param input         - is value from text input
+     * @param eventHandler  - is function that will return data from service to controller
+     */
 
+    this.addToDatabase            = function(input, eventHandler){
         $http.post('/todoback/public/ajax/post/data', {input: input} ).success(function(data) {
-
+            eventHandler(data);
         });
     };
 
