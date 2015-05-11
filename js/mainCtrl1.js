@@ -1,6 +1,6 @@
 var app = angular.module('todoApp');
 
-app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope, $cookies, $cookieStore){
+app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', 'databaseService', function($scope, $cookies, $cookieStore, databaseService ){
     /*
      * Important!
      * When you start app you must define your scope variables to avoid undefined values
@@ -10,6 +10,7 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
     $scope.state         = false;
     $scope.arrayObj      = [];
     $scope.cookieName    = 'bild';
+    $scope.storageMode   = 'db';
 
 
 
@@ -21,7 +22,7 @@ app.controller('myCtrl', ['$scope', '$cookies', '$cookieStore', function($scope,
         else
         {
             $scope.state = false;
-            $scope.pushToArray();
+            $scope.storageMode === 'cookie'? $scope.pushToArray() : databaseService.addToDatabase($scope.todo);
             $scope.todo  = '';
         }
     };
